@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WindowServe | Premium Window Treatments</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-ink: #1a1814;
+      --color-stone: #3d3832;
+      --color-cream: #f5f0e8;
+      --color-sand: #e8e0d4;
+      --color-accent: #8b7355;
+      --color-accent-light: #a89078;
+      --color-teal: #7a9385;
+      --color-teal-light: #8fa99a;
+      --color-white: #ffffff;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --shadow-soft: 0 4px 24px rgba(26, 24, 20, 0.08);
+      --shadow-lift: 0 12px 48px rgba(26, 24, 20, 0.12);
+      --radius: 6px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-stone);
+      background: var(--color-cream);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(245, 240, 232, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(61, 56, 50, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      height: 60px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--color-stone);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--color-accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--color-ink);
+      color: var(--color-white);
+      border: 2px solid var(--color-ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-stone);
+      border-color: var(--color-stone);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-ink);
+      border: 2px solid var(--color-ink);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-ink);
+      color: var(--color-white);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 1.5rem 4rem;
+      background: 
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(248, 245, 240, 0.75) 0%, rgba(245, 240, 232, 0.4) 50%, transparent 100%),
+        url('hero.png') center center / cover no-repeat;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(245, 240, 232, 0.15) 0%, transparent 30%, transparent 70%, rgba(61, 56, 50, 0.08) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 600;
+      color: var(--color-ink);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--color-teal);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--color-stone);
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero .btn-primary {
+      background: var(--color-teal);
+      color: var(--color-white);
+      border-color: var(--color-teal);
+    }
+
+    .hero .btn-primary:hover {
+      background: var(--color-teal-light);
+      border-color: var(--color-teal-light);
+      color: var(--color-white);
+    }
+
+    .hero .btn-outline {
+      color: var(--color-ink);
+      border-color: var(--color-ink);
+    }
+
+    .hero .btn-outline:hover {
+      background: var(--color-ink);
+      color: var(--color-white);
+    }
+
+    /* Services */
+    .services {
+      padding: 5rem 1.5rem;
+      background: var(--color-white);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: var(--color-stone);
+      font-size: 1.05rem;
+    }
+
+    .services-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--color-cream);
+      padding: 2rem;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+      border-color: rgba(139, 115, 85, 0.2);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--color-ink);
+      color: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      color: var(--color-stone);
+      font-size: 0.95rem;
+    }
+
+    /* About Section */
+    .about {
+      padding: 5rem 1.5rem;
+      background: var(--color-sand);
+    }
+
+    .about-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      color: var(--color-stone);
+      line-height: 1.7;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 5rem 1.5rem;
+      background: var(--color-ink);
+      color: var(--color-cream);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--color-stone);
+      color: var(--color-sand);
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo {
+      height: 40px;
+      filter: brightness(0) invert(0.9);
+    }
+
+    .footer nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer a {
+      color: var(--color-sand);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer a:hover {
+      color: var(--color-white);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+
+      .nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-cream);
+        padding: 1.5rem;
+        gap: 1rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer nav {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="#">
+        <img src="logo.png" alt="WindowServe" class="logo">
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact">Free Quote</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Transform Your Space with <em>Beautiful</em> Window Treatments</h1>
+        <p>Custom blinds, shades, and shutters crafted for your home. Expert installation, premium materials, and timeless style—all in one place.</p>
+        <div class="hero-buttons">
+          <a href="#services" class="btn btn-primary">Explore Services</a>
+          <a href="#contact" class="btn btn-outline">Get a Free Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-header">
+        <h2>Our Window Solutions</h2>
+        <p>From classic to contemporary, we offer a full range of window treatments to match your style and needs.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon">〰</div>
+          <h3>Blinds</h3>
+          <p>Wood, faux wood, and aluminum blinds for precise light control and enduring elegance in any room.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">⊞</div>
+          <h3>Shades</h3>
+          <p>Roman, roller, cellular, and solar shades that soften light, add privacy, and elevate your décor.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">⊟</div>
+          <h3>Shutters</h3>
+          <p>Custom-built plantation shutters for a permanent, high-value upgrade that complements any home.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">⌸</div>
+          <h3>Drapery & Curtains</h3>
+          <p>Luxurious fabrics and custom lengths to frame your windows and add warmth to your interiors.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-inner">
+        <h2>About Us</h2>
+        <p>We're a local Iowa-based business proud to serve the Des Moines metro area. With years of experience in window treatments, we bring personalized service, expert installation, and quality products right to your doorstep—because your home deserves the best.</p>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Ready to Love Your Windows?</h2>
+      <p>Schedule a free in-home consultation. We'll measure, advise, and bring samples—no obligation.</p>
+      <a href="mailto:quotes@WindowServe.com" class="btn btn-primary" style="background: var(--color-accent); border-color: var(--color-accent);">Email quotes@WindowServe.com</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <img src="logo.png" alt="WindowServe" class="footer-logo">
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="footer-bottom">© WindowServe. Premium window treatments for your home.</p>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('nav').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
