@@ -81,6 +81,7 @@
     .logo {
       height: 60px;
       width: auto;
+      mix-blend-mode: multiply;
     }
 
     .nav {
@@ -360,7 +361,8 @@
 
     .footer-logo {
       height: 40px;
-      filter: brightness(0) invert(0.9);
+      filter: invert(1);
+      mix-blend-mode: lighten;
     }
 
     .footer nav {
@@ -381,6 +383,8 @@
       justify-content: center;
       width: 40px;
       height: 40px;
+      min-width: 40px;
+      flex-shrink: 0;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.1);
       color: var(--color-sand);
@@ -457,10 +461,21 @@
       .footer-inner {
         flex-direction: column;
         text-align: center;
+        align-items: center;
       }
 
       .footer nav {
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      .footer-social {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: nowrap;
+        padding: 0 0.5rem;
       }
     }
   </style>
@@ -469,7 +484,7 @@
   <header class="header">
     <div class="header-inner">
       <a href="#">
-        <img src="logo.png" alt="WindowServe" class="logo">
+        <img src="logo.svg" alt="WindowServe" class="logo">
       </a>
       <nav class="nav" id="nav">
         <a href="#services">Services</a>
