@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WindowServe | Premium Window Treatments</title>
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -78,8 +78,21 @@
       justify-content: space-between;
     }
 
+    .logo-link {
+      display: inline-flex;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .logo-icon {
+      height: 40px;
+      width: auto;
+      mix-blend-mode: multiply;
+    }
     .logo {
-      height: 60px;
+      height: 50px;
       width: auto;
       mix-blend-mode: multiply;
     }
@@ -359,6 +372,17 @@
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
+    .footer-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .footer-logo-icon {
+      height: 32px;
+      width: auto;
+      filter: invert(1);
+      mix-blend-mode: lighten;
+    }
     .footer-logo {
       height: 40px;
       filter: invert(1);
@@ -483,8 +507,11 @@
 <body>
   <header class="header">
     <div class="header-inner">
-      <a href="#">
-        <img src="logo.svg" alt="WindowServe" class="logo">
+      <a href="#" class="logo-link">
+        <span class="logo-wrap">
+          <img src="logo_icon.svg" alt="" class="logo-icon" aria-hidden="true">
+          <img src="logo.svg" alt="WindowServe" class="logo">
+        </span>
       </a>
       <nav class="nav" id="nav">
         <a href="#services">Services</a>
@@ -559,7 +586,10 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <img src="logo.svg" alt="WindowServe" class="footer-logo">
+      <span class="logo-wrap footer-logo-wrap">
+        <img src="logo_icon.svg" alt="" class="logo-icon footer-logo-icon" aria-hidden="true">
+        <img src="logo.svg" alt="WindowServe" class="footer-logo">
+      </span>
       <nav>
         <a href="#services">Services</a>
         <a href="#about">About</a>
