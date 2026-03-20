@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-ink: #1a1814;
@@ -30,6 +30,7 @@
       --color-white: #ffffff;
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-wordmark: 'Bebas Neue', 'Arial Narrow', 'Helvetica Condensed', sans-serif;
       --shadow-soft: 0 4px 24px rgba(26, 24, 20, 0.08);
       --shadow-lift: 0 12px 48px rgba(26, 24, 20, 0.12);
       --radius: 6px;
@@ -121,31 +122,70 @@
     }
 
     .nav-brand-link {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 0.95rem;
+      text-decoration: none;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-brand-link.brand-515 {
+      padding: 0.42rem 0.8rem;
+      font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-accent);
-      padding: 0.4rem 0.75rem;
-      border-radius: var(--radius);
-      background: rgba(139, 115, 85, 0.14);
-      border: 1px solid rgba(139, 115, 85, 0.4);
-      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      vertical-align: middle;
     }
 
-    .nav-brand-link:hover {
-      color: var(--color-ink);
-      background: rgba(139, 115, 85, 0.22);
-      border-color: var(--color-accent);
+    .nav-brand-link.brand-515:hover {
+      transform: translateY(-1px);
     }
 
-    /* "515 Windows" emphasis site-wide */
+    /* "515 Windows" — logo-style wordmark */
     .brand-515 {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: nowrap;
       font-family: var(--font-display);
       font-weight: 700;
       letter-spacing: 0.04em;
-      color: var(--color-accent);
+      color: var(--color-ink);
+      /* Lining figures so 515 matches cap-height of "Windows" (not old-style/low numerals) */
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1, "kern" 1;
+      background: linear-gradient(180deg, #fcf9f5 0%, #e4dcd0 100%);
+      padding: 0.1em 0.52em;
+      border-radius: 8px;
+      border: 1px solid rgba(139, 115, 85, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 8px rgba(26, 24, 20, 0.08);
+      line-height: 1.2;
+      vertical-align: middle;
+    }
+
+    /* All-caps 515 WINDOWS — condensed display wordmark */
+    .brand-515-wordmark {
+      font-family: var(--font-wordmark);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      font-size: 1.35em;
+      line-height: 1;
+      /* Even vertical padding so digits aren’t pushed down in the pill */
+      padding: 0.1em 0.48em;
+      text-transform: uppercase;
+    }
+
+    /* 515-WINDOWS — same typography as surrounding text */
+    .brand-515-mnemonic {
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      letter-spacing: normal;
+      line-height: inherit;
+      color: inherit;
+      display: inline;
+      vertical-align: baseline;
+    }
+
+    /* inline-flex .btn can swallow space before span; use margin for a clear gap */
+    .btn .brand-515-mnemonic {
+      margin-left: 0.35em;
     }
 
     .hero-sub-brand .brand-515 {
@@ -153,32 +193,58 @@
       font-size: 1.05em;
     }
 
-    /* Hero headline only — makes "515 Windows" pop vs. ink title */
+    /* Hero headline — teal wordmark, no heavy box (readable on photo via soft halo) */
     .hero-515 h1 .brand-515 {
+      display: inline;
       font-style: italic;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--color-teal);
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
+      align-self: baseline;
+      vertical-align: baseline;
+      line-height: inherit;
+      letter-spacing: inherit;
       text-shadow:
-        0 0 42px rgba(122, 147, 133, 0.65),
-        0 0 2px rgba(255, 255, 255, 0.9),
-        0 2px 8px rgba(26, 24, 20, 0.12);
+        0 0 28px rgba(245, 240, 232, 0.95),
+        0 0 10px rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(26, 24, 20, 0.15);
     }
 
-    .footer .nav-brand-link {
-      color: var(--color-accent-light);
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(168, 144, 120, 0.45);
+    .footer .nav-brand-link.brand-515 {
+      color: var(--color-cream);
+      background: rgba(0, 0, 0, 0.32);
+      border-color: rgba(168, 144, 120, 0.55);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 2px 8px rgba(0, 0, 0, 0.22);
     }
 
-    .footer .nav-brand-link:hover {
+    .footer .nav-brand-link.brand-515:hover {
       color: var(--color-white);
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.42);
       border-color: var(--color-accent-light);
     }
 
+    .cta .brand-515 {
+      color: var(--color-cream);
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(245, 240, 232, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Bebas Neue has a tall line-box — less padding below caps inside the pill */
+    .cta h2 .brand-515-wordmark {
+      line-height: 0.82;
+      padding: 0.06em 0.45em 0.015em;
+    }
+
     .footer-bottom .brand-515 {
-      color: #e8dcc8;
-      font-weight: 700;
+      color: var(--color-cream);
+      background: rgba(0, 0, 0, 0.28);
+      border-color: rgba(232, 224, 212, 0.4);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 1px 4px rgba(0, 0, 0, 0.2);
     }
 
     .btn {
@@ -256,6 +322,17 @@
       line-height: 1.15;
       margin-bottom: 1rem;
       letter-spacing: -0.02em;
+    }
+
+    /* One baseline for headline + wordmark (avoids inline-flex vertical misalignment) */
+    .hero-515 h1 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      column-gap: 0.22em;
+      row-gap: 0.12em;
+      text-align: center;
     }
 
     .hero h1 em {
@@ -401,6 +478,13 @@
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 600;
       margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      column-gap: 0.22em;
+      row-gap: 0.2em;
+      text-align: center;
     }
 
     .cta p {
@@ -595,7 +679,7 @@
         <a href="index.html#about">About</a>
         <a href="515-windows.html" class="nav-brand-link brand-515">515 Windows</a>
         <a href="index.html#contact">Contact</a>
-        <a href="tel:5159463667" class="nav-phone">📞 Call 515-WINDOWS</a>
+        <a href="tel:5159463667" class="nav-phone">📞 Call <span class="brand-515-mnemonic">515-WINDOWS</span></a>
         <a href="index.html#contact">Free Quote</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -615,7 +699,7 @@
         <p class="hero-sub-brand">Des Moines' own <span class="brand-515">515 Windows</span> — A WindowServe Brand</p>
         <div class="hero-buttons">
           <a href="#services" class="btn btn-primary">Our Services</a>
-          <a href="tel:5159463667" class="btn btn-outline">Call 515-WINDOWS</a>
+          <a href="tel:5159463667" class="btn btn-outline">Call<span class="brand-515-mnemonic">515-WINDOWS</span></a>
         </div>
       </div>
     </section>
@@ -650,8 +734,8 @@
     </section>
 
     <section class="cta" id="contact">
-      <h2>Call 515 WINDOWS Today</h2>
-      <p class="cta-phone"><a href="tel:5159463667">Call 515-WINDOWS — (515) 946-3667</a></p>
+      <h2>Call <span class="brand-515 brand-515-wordmark">515 WINDOWS</span> Today</h2>
+      <p class="cta-phone"><a href="tel:5159463667">Call <span class="brand-515-mnemonic">515-WINDOWS</span> — (515) 946-3667</a></p>
     </section>
   </main>
 
@@ -679,7 +763,7 @@
         </div>
       </nav>
     </div>
-    <p class="footer-bottom">© WindowServe Inc. | <span class="brand-515">515 Windows</span> is a WindowServe Brand<br>📞 <a href="tel:5159463667">515-WINDOWS (515-946-3667)</a> | Des Moines, Iowa</p>
+    <p class="footer-bottom">© WindowServe Inc. | <span class="brand-515">515 Windows</span> is a WindowServe Brand<br>📞 <a href="tel:5159463667"><span class="brand-515-mnemonic">515-WINDOWS</span> (515-946-3667)</a> | Des Moines, Iowa</p>
   </footer>
 
   <script>

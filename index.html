@@ -121,48 +121,84 @@
     }
 
     .nav-brand-link {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 0.95rem;
+      text-decoration: none;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-brand-link.brand-515 {
+      padding: 0.42rem 0.8rem;
+      font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-accent);
-      padding: 0.4rem 0.75rem;
-      border-radius: var(--radius);
-      background: rgba(139, 115, 85, 0.14);
-      border: 1px solid rgba(139, 115, 85, 0.4);
-      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      vertical-align: middle;
     }
 
-    .nav-brand-link:hover {
-      color: var(--color-ink);
-      background: rgba(139, 115, 85, 0.22);
-      border-color: var(--color-accent);
+    .nav-brand-link.brand-515:hover {
+      transform: translateY(-1px);
     }
 
-    /* "515 Windows" emphasis site-wide */
+    /* "515 Windows" — logo-style wordmark */
     .brand-515 {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: nowrap;
       font-family: var(--font-display);
       font-weight: 700;
       letter-spacing: 0.04em;
-      color: var(--color-accent);
+      color: var(--color-ink);
+      /* Lining figures so 515 matches cap-height of "Windows" (not old-style/low numerals) */
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1, "kern" 1;
+      background: linear-gradient(180deg, #fcf9f5 0%, #e4dcd0 100%);
+      padding: 0.1em 0.52em;
+      border-radius: 8px;
+      border: 1px solid rgba(139, 115, 85, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 8px rgba(26, 24, 20, 0.08);
+      line-height: 1.2;
+      vertical-align: middle;
     }
 
-    .footer .nav-brand-link {
-      color: var(--color-accent-light);
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(168, 144, 120, 0.45);
+    /* 515-WINDOWS — same typography as surrounding text */
+    .brand-515-mnemonic {
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      letter-spacing: normal;
+      line-height: inherit;
+      color: inherit;
+      display: inline;
+      vertical-align: baseline;
     }
 
-    .footer .nav-brand-link:hover {
+    .btn .brand-515-mnemonic {
+      margin-left: 0.35em;
+    }
+
+    .footer .nav-brand-link.brand-515 {
+      color: var(--color-cream);
+      background: rgba(0, 0, 0, 0.32);
+      border-color: rgba(168, 144, 120, 0.55);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 2px 8px rgba(0, 0, 0, 0.22);
+    }
+
+    .footer .nav-brand-link.brand-515:hover {
       color: var(--color-white);
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.42);
       border-color: var(--color-accent-light);
     }
 
+    .cta .brand-515 {
+      color: var(--color-cream);
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(245, 240, 232, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 6px rgba(0, 0, 0, 0.15);
+    }
+
     .footer-bottom .brand-515 {
-      color: #e8dcc8;
-      font-weight: 700;
+      color: var(--color-cream);
+      background: rgba(0, 0, 0, 0.28);
+      border-color: rgba(232, 224, 212, 0.4);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 1px 4px rgba(0, 0, 0, 0.2);
     }
 
     .btn {
@@ -585,7 +621,7 @@
         <a href="#about">About</a>
         <a href="515-windows.html" class="nav-brand-link brand-515">515 Windows</a>
         <a href="#contact">Contact</a>
-        <a href="tel:5159463667" class="nav-phone">📞 Call 515-WINDOWS</a>
+        <a href="tel:5159463667" class="nav-phone">📞 Call <span class="brand-515-mnemonic">515-WINDOWS</span></a>
         <a href="#contact">Free Quote</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -642,14 +678,14 @@
     <section class="about" id="about">
       <div class="about-inner">
         <h2>About Us</h2>
-        <p>Locally known as <span class="brand-515">515 Windows</span> — A WindowServe Brand — we're a Des Moines based window treatment business proud to serve the metro area. Call us at <strong>515-WINDOWS</strong> and we'll bring personalized service, expert installation, and premium products right to your doorstep — because your home deserves the best.</p>
+        <p>Locally known as <span class="brand-515">515 Windows</span> — A WindowServe Brand — we're a Des Moines based window treatment business proud to serve the metro area. Call us at <span class="brand-515-mnemonic">515-WINDOWS</span> and we'll bring personalized service, expert installation, and premium products right to your doorstep — because your home deserves the best.</p>
       </div>
     </section>
 
     <section class="cta" id="contact">
       <h2>Ready to Love Your Windows?</h2>
       <p>Schedule a free in-home consultation. We'll measure, advise, and bring samples—no obligation.</p>
-      <p class="cta-phone"><a href="tel:5159463667">📞 Call 515-WINDOWS: (515) 946-3667</a></p>
+      <p class="cta-phone"><a href="tel:5159463667">📞 Call <span class="brand-515-mnemonic">515-WINDOWS</span>: (515) 946-3667</a></p>
       <a href="mailto:quotes@WindowServe.com" class="btn btn-primary" style="background: var(--color-accent); border-color: var(--color-accent);">Email quotes@WindowServe.com</a>
     </section>
   </main>
@@ -678,7 +714,7 @@
         </div>
       </nav>
     </div>
-    <p class="footer-bottom">© WindowServe Inc. | <span class="brand-515">515 Windows</span> is a WindowServe Brand<br>📞 <a href="tel:5159463667">515-WINDOWS (515-946-3667)</a> | Des Moines, Iowa</p>
+    <p class="footer-bottom">© WindowServe Inc. | <span class="brand-515">515 Windows</span> is a WindowServe Brand<br>📞 <a href="tel:5159463667"><span class="brand-515-mnemonic">515-WINDOWS</span> (515-946-3667)</a> | Des Moines, Iowa</p>
   </footer>
 
   <script>
