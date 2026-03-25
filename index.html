@@ -12,7 +12,7 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WindowServe | Premium Window Treatments</title>
+  <title>📞 515-WINDOWS | Premium Window Treatments | WindowServe</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -439,21 +439,51 @@
       opacity: 0.9;
     }
 
-    .cta-phone {
+    .cta .cta-phone {
       margin-bottom: 1rem !important;
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .cta-phone a {
+    .cta-phone-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
       color: var(--color-cream);
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.1rem;
       transition: opacity 0.2s ease;
     }
 
-    .cta-phone a:hover {
-      opacity: 0.9;
+    .cta-phone-link:hover {
+      opacity: 0.92;
+    }
+
+    .cta-phone-link:hover .cta-phone-digits {
       text-decoration: underline;
+    }
+
+    .cta-phone-label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      opacity: 0.82;
+      letter-spacing: 0.04em;
+    }
+
+    .cta-phone-mnemonic {
+      font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .cta-phone-digits {
+      font-size: 0.8rem;
+      font-weight: 500;
+      opacity: 0.82;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.04em;
     }
 
     /* Footer */
@@ -544,6 +574,25 @@
       text-align: center;
       font-size: 0.9rem;
       opacity: 0.8;
+      line-height: 1.65;
+    }
+
+    .footer-phone-link {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-phone-sep {
+      opacity: 0.5;
+      user-select: none;
+    }
+
+    .footer-phone-digits {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
     }
 
     /* Mobile nav toggle */
@@ -619,9 +668,8 @@
       <nav class="nav" id="nav">
         <a href="#services">Services</a>
         <a href="#about">About</a>
-        <a href="515-windows.html" class="nav-brand-link brand-515">515 Windows</a>
         <a href="#contact">Contact</a>
-        <a href="tel:5159463667" class="nav-phone">📞 Call <span class="brand-515-mnemonic">515-WINDOWS</span></a>
+        <a href="tel:5159463667" class="nav-phone">📞 <span class="brand-515-mnemonic">515-WINDOWS</span></a>
         <a href="#contact">Free Quote</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -678,15 +726,15 @@
     <section class="about" id="about">
       <div class="about-inner">
         <h2>About Us</h2>
-        <p>Locally known as <span class="brand-515">515 Windows</span> — A WindowServe Brand — we're a Des Moines based window treatment business proud to serve the metro area. Call us at <span class="brand-515-mnemonic">515-WINDOWS</span> and we'll bring personalized service, expert installation, and premium products right to your doorstep — because your home deserves the best.</p>
+        <p>We're a Des Moines based window treatment business proud to serve the metro area. Call us at <span class="brand-515-mnemonic">515-WINDOWS</span> and we'll bring personalized service, expert installation, and premium products right to your doorstep — because your home deserves the best.</p>
       </div>
     </section>
 
     <section class="cta" id="contact">
       <h2>Ready to Love Your Windows?</h2>
       <p>Schedule a free in-home consultation. We'll measure, advise, and bring samples—no obligation.</p>
-      <p class="cta-phone"><a href="tel:5159463667">📞 Call <span class="brand-515-mnemonic">515-WINDOWS</span>: (515) 946-3667</a></p>
-      <a href="mailto:quotes@WindowServe.com" class="btn btn-primary" style="background: var(--color-accent); border-color: var(--color-accent);">Email quotes@WindowServe.com</a>
+      <p class="cta-phone"><a href="tel:5159463667" class="cta-phone-link"><span class="cta-phone-label">Call or text</span><span class="cta-phone-mnemonic"><span class="brand-515-mnemonic">515-WINDOWS</span></span><span class="cta-phone-digits">(515) 946-3667</span></a></p>
+      <a href="mailto:quotes@WindowServe.com" class="btn btn-primary" style="background: var(--color-accent); border-color: var(--color-accent);">Email quotes@windowserve.com</a>
     </section>
   </main>
 
@@ -699,7 +747,6 @@
       <nav>
         <a href="#services">Services</a>
         <a href="#about">About</a>
-        <a href="515-windows.html" class="nav-brand-link brand-515">515 Windows</a>
         <a href="#contact">Contact</a>
         <div class="footer-social">
           <a href="https://www.facebook.com/windowserve/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -714,7 +761,7 @@
         </div>
       </nav>
     </div>
-    <p class="footer-bottom">© WindowServe Inc. | <span class="brand-515">515 Windows</span> is a WindowServe Brand<br>📞 <a href="tel:5159463667"><span class="brand-515-mnemonic">515-WINDOWS</span> (515-946-3667)</a> | Des Moines, Iowa</p>
+    <p class="footer-bottom">© WindowServe Inc. | 📞 <a href="tel:5159463667" class="footer-phone-link"><span class="brand-515-mnemonic">515-WINDOWS</span><span class="footer-phone-sep" aria-hidden="true"></a> | Des Moines, Iowa</p>
   </footer>
 
   <script>
