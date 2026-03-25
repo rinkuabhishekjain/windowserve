@@ -339,11 +339,11 @@
       flex-direction: column;
       justify-content: center;
       padding: 5.35rem 1.5rem 4rem;
-      background-color: #f2efe8;
+      background-color: #f5f1ea;
       background-image:
-        radial-gradient(ellipse 78% 68% at 18% 22%, rgba(184, 137, 61, 0.11), transparent 60%),
-        radial-gradient(ellipse 76% 62% at 92% 78%, rgba(19, 43, 71, 0.1), transparent 58%),
-        radial-gradient(ellipse 96% 88% at 50% 38%, rgba(255, 255, 255, 0.42) 0%, rgba(248, 244, 236, 0.28) 42%, rgba(236, 240, 246, 0.12) 65%, transparent 88%),
+        radial-gradient(ellipse 70% 55% at 12% 18%, rgba(255, 252, 245, 0.55), transparent 58%),
+        radial-gradient(ellipse 65% 50% at 88% 85%, rgba(19, 43, 71, 0.07), transparent 58%),
+        radial-gradient(ellipse 98% 90% at 50% 35%, rgba(255, 255, 255, 0.52) 0%, rgba(250, 246, 238, 0.32) 45%, rgba(238, 244, 252, 0.14) 68%, transparent 90%),
         url('hero.png');
       background-position: center center;
       background-size: cover;
@@ -358,14 +358,15 @@
       left: 0;
       right: 0;
       bottom: 0;
-      /* Smooth brand wash + soft “read zone” for black type (no harsh milk) */
+      /* Brighter “lit” feel: soft daylight from upper area + gentle read zone */
       background:
-        radial-gradient(ellipse 88% 72% at 50% 44%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 48%, transparent 72%),
-        radial-gradient(ellipse 52% 44% at 74% 28%, rgba(201, 160, 86, 0.09), transparent 58%),
-        radial-gradient(ellipse 52% 46% at 24% 74%, rgba(19, 43, 71, 0.08), transparent 58%),
-        linear-gradient(125deg, rgba(19, 43, 71, 0.06) 0%, transparent 50%),
-        linear-gradient(305deg, rgba(184, 137, 61, 0.07) 0%, transparent 48%),
-        linear-gradient(to bottom, rgba(252, 246, 236, 0.14) 0%, transparent 28%, transparent 70%, rgba(19, 43, 71, 0.11) 100%);
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 28%, transparent 48%),
+        radial-gradient(ellipse 90% 75% at 50% 42%, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.05) 52%, transparent 74%),
+        radial-gradient(ellipse 48% 40% at 78% 22%, rgba(255, 235, 210, 0.12), transparent 58%),
+        radial-gradient(ellipse 50% 48% at 22% 78%, rgba(19, 43, 71, 0.06), transparent 58%),
+        linear-gradient(125deg, rgba(19, 43, 71, 0.04) 0%, transparent 52%),
+        linear-gradient(305deg, rgba(184, 137, 61, 0.05) 0%, transparent 50%),
+        linear-gradient(to bottom, transparent 0%, transparent 72%, rgba(19, 43, 71, 0.08) 100%);
       pointer-events: none;
     }
 
@@ -381,7 +382,7 @@
     .hero h1 {
       font-family: var(--font-display);
       font-size: clamp(2.65rem, 6.5vw, 4.25rem);
-      font-weight: 700;
+      font-weight: 400;
       color: #000000;
       line-height: 1.12;
       margin-bottom: 1.25rem;
@@ -392,14 +393,14 @@
 
     .hero h1 em {
       font-style: italic;
-      font-weight: 600;
-      color: #000000;
+      font-weight: 400;
+      color: var(--color-accent-dark);
       text-shadow: none;
     }
 
     .hero-inner > p:not(.hero-vanity) {
       font-size: 1.15rem;
-      font-weight: 600;
+      font-weight: 400;
       color: #000000;
       max-width: 560px;
       margin: 0 auto 1.25rem;
@@ -492,20 +493,20 @@
     }
 
     .hero .btn-primary {
-      background: linear-gradient(165deg, var(--color-accent-light) 0%, var(--color-accent) 40%, var(--color-accent-dark) 100%);
+      background: linear-gradient(165deg, var(--color-teal) 0%, #1d4a73 100%);
       color: var(--color-white);
-      border: 2px solid rgba(19, 43, 71, 0.35);
+      border: 2px solid rgba(255, 255, 255, 0.22);
       box-shadow:
-        0 8px 32px rgba(184, 137, 61, 0.42),
-        0 2px 14px rgba(19, 43, 71, 0.18);
+        0 8px 32px rgba(42, 85, 130, 0.4),
+        0 2px 14px rgba(19, 43, 71, 0.2);
     }
 
     .hero .btn-primary:hover {
-      background: linear-gradient(165deg, #dcc070 0%, var(--color-accent-light) 55%, var(--color-accent) 100%);
-      border-color: var(--color-ink);
+      background: linear-gradient(165deg, var(--color-teal-light) 0%, var(--color-teal) 100%);
+      border-color: rgba(255, 255, 255, 0.32);
       color: var(--color-white);
       box-shadow:
-        0 12px 40px rgba(184, 137, 61, 0.48),
+        0 12px 40px rgba(42, 85, 130, 0.48),
         0 4px 18px rgba(19, 43, 71, 0.22);
     }
 
