@@ -16,23 +16,26 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Core palette aligned to logo.svg (navy, gold, cool neutrals) */
     :root {
-      --color-ink: #1a1814;
-      --color-stone: #3d3832;
-      --color-cream: #f5f0e8;
-      --color-sand: #e8e0d4;
-      --color-accent: #8b7355;
-      --color-accent-light: #a89078;
-      --color-teal: #7a9385;
-      --color-teal-light: #8fa99a;
+      --color-ink: #132b47;
+      --color-stone: #4a5a6f;
+      --color-cream: #f5f3ee;
+      --color-sand: #e4e7ec;
+      --color-accent: #b8893d;
+      --color-accent-light: #c9a056;
+      --color-teal: #2a5582;
+      --color-teal-light: #3d6f9e;
       --color-white: #ffffff;
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', -apple-system, sans-serif;
-      --shadow-soft: 0 4px 24px rgba(26, 24, 20, 0.08);
-      --shadow-lift: 0 12px 48px rgba(26, 24, 20, 0.12);
-      --radius: 6px;
+      --shadow-soft: 0 4px 24px rgba(19, 43, 71, 0.09);
+      --shadow-lift: 0 20px 50px rgba(19, 43, 71, 0.12);
+      --shadow-card: 0 4px 20px rgba(19, 43, 71, 0.06), 0 1px 3px rgba(19, 43, 71, 0.04);
+      --radius: 8px;
+      --radius-lg: 16px;
     }
 
     *,
@@ -52,7 +55,9 @@
       font-size: 16px;
       line-height: 1.6;
       color: var(--color-stone);
-      background: var(--color-cream);
+      background:
+        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(184, 137, 61, 0.06), transparent 55%),
+        linear-gradient(180deg, #faf9f6 0%, var(--color-cream) 35%, #e8eaf0 100%);
       overflow-x: hidden;
     }
 
@@ -63,16 +68,17 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(245, 240, 232, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(61, 56, 50, 0.08);
+      background: rgba(252, 251, 248, 0.92);
+      backdrop-filter: blur(16px) saturate(1.2);
+      border-bottom: 1px solid rgba(19, 43, 71, 0.08);
+      box-shadow: 0 4px 32px rgba(19, 43, 71, 0.06);
       transition: all 0.3s ease;
     }
 
     .header-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: .2rem .5rem;
+      padding: 0.45rem 0.75rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -106,13 +112,14 @@
     .nav a {
       color: var(--color-stone);
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
       transition: color 0.2s ease;
     }
 
     .nav a:hover {
-      color: var(--color-accent);
+      color: var(--color-teal);
     }
 
     .nav-phone {
@@ -149,25 +156,83 @@
       /* Lining figures so 515 matches cap-height of "Windows" (not old-style/low numerals) */
       font-variant-numeric: lining-nums;
       font-feature-settings: "lnum" 1, "kern" 1;
-      background: linear-gradient(180deg, #fcf9f5 0%, #e4dcd0 100%);
+      background: linear-gradient(180deg, #fcfaf7 0%, #e8e2d8 100%);
       padding: 0.1em 0.52em;
       border-radius: 8px;
-      border: 1px solid rgba(139, 115, 85, 0.45);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 8px rgba(26, 24, 20, 0.08);
+      border: 1px solid rgba(42, 85, 130, 0.32);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 2px 8px rgba(19, 43, 71, 0.07);
       line-height: 1.2;
       vertical-align: middle;
     }
 
-    /* 515-WINDOWS — same typography as surrounding text */
+    /* 515-WINDOWS — vanity line; treated as a branded call-to-memory chip */
     .brand-515-mnemonic {
-      font-family: inherit;
-      font-weight: inherit;
-      font-size: inherit;
-      letter-spacing: normal;
-      line-height: inherit;
-      color: inherit;
-      display: inline;
-      vertical-align: baseline;
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.25;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
+      color: var(--color-ink);
+      background: linear-gradient(165deg, #fffefb 0%, #ebe6de 52%, #e4ddd2 100%);
+      padding: 0.22em 0.65em 0.18em;
+      border-radius: 8px;
+      border: 1px solid rgba(42, 85, 130, 0.34);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        0 2px 8px rgba(19, 43, 71, 0.07);
+      vertical-align: 0.12em;
+      white-space: nowrap;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-phone:hover .brand-515-mnemonic,
+    .cta-phone-link:hover .brand-515-mnemonic,
+    .footer-phone-link:hover .brand-515-mnemonic {
+      transform: translateY(-1px);
+      border-color: rgba(184, 137, 61, 0.82);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 4px 14px rgba(19, 43, 71, 0.12);
+    }
+
+    .nav-phone .brand-515-mnemonic {
+      font-size: 0.78rem;
+      letter-spacing: 0.07em;
+      padding: 0.2em 0.52em 0.16em;
+      vertical-align: 0.08em;
+    }
+
+    .cta .brand-515-mnemonic {
+      color: #f8f6f1;
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.22) 0%, rgba(12, 26, 48, 0.94) 100%);
+      border-color: rgba(220, 205, 180, 0.5);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 3px 14px rgba(0, 0, 0, 0.38);
+    }
+
+    .cta-phone-link:hover .brand-515-mnemonic {
+      border-color: rgba(232, 224, 212, 0.75);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        0 4px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    .footer .brand-515-mnemonic {
+      color: var(--color-cream);
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.14) 0%, rgba(8, 18, 36, 0.45) 100%);
+      border-color: rgba(200, 185, 155, 0.48);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 2px 10px rgba(0, 0, 0, 0.28);
+    }
+
+    .footer-phone-link:hover .brand-515-mnemonic {
+      border-color: rgba(232, 224, 212, 0.65);
     }
 
     .btn .brand-515-mnemonic {
@@ -176,65 +241,73 @@
 
     .footer .nav-brand-link.brand-515 {
       color: var(--color-cream);
-      background: rgba(0, 0, 0, 0.32);
-      border-color: rgba(168, 144, 120, 0.55);
+      background: rgba(8, 18, 36, 0.35);
+      border-color: rgba(184, 137, 61, 0.45);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 2px 8px rgba(0, 0, 0, 0.22);
     }
 
     .footer .nav-brand-link.brand-515:hover {
       color: var(--color-white);
-      background: rgba(0, 0, 0, 0.42);
+      background: rgba(8, 18, 36, 0.48);
       border-color: var(--color-accent-light);
     }
 
     .cta .brand-515 {
       color: var(--color-cream);
       background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(245, 240, 232, 0.45);
+      border-color: rgba(220, 210, 195, 0.42);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 6px rgba(0, 0, 0, 0.15);
     }
 
     .footer-bottom .brand-515 {
       color: var(--color-cream);
-      background: rgba(0, 0, 0, 0.28);
-      border-color: rgba(232, 224, 212, 0.4);
+      background: rgba(8, 18, 36, 0.32);
+      border-color: rgba(210, 198, 175, 0.38);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 1px 4px rgba(0, 0, 0, 0.2);
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      padding: 0.75rem 1.5rem;
+      padding: 0.82rem 1.65rem;
       font-family: var(--font-body);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       text-decoration: none;
-      border-radius: var(--radius);
-      transition: all 0.25s ease;
+      border-radius: 999px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
       cursor: pointer;
     }
 
     .btn-primary {
-      background: var(--color-ink);
+      background: linear-gradient(165deg, var(--color-ink) 0%, #0f2138 100%);
       color: var(--color-white);
-      border: 2px solid var(--color-ink);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 20px rgba(19, 43, 71, 0.28);
     }
 
     .btn-primary:hover {
-      background: var(--color-stone);
-      border-color: var(--color-stone);
-      transform: translateY(-1px);
+      background: linear-gradient(165deg, var(--color-stone) 0%, var(--color-ink) 100%);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(19, 43, 71, 0.35);
     }
 
     .btn-outline {
-      background: transparent;
+      background: rgba(255, 255, 255, 0.65);
       color: var(--color-ink);
-      border: 2px solid var(--color-ink);
+      border: 2px solid rgba(19, 43, 71, 0.35);
+      box-shadow: 0 2px 12px rgba(19, 43, 71, 0.08);
     }
 
     .btn-outline:hover {
       background: var(--color-ink);
       color: var(--color-white);
+      border-color: var(--color-ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(19, 43, 71, 0.22);
     }
 
     /* Hero */
@@ -245,7 +318,7 @@
       justify-content: center;
       padding: 8rem 1.5rem 4rem;
       background: 
-        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(248, 245, 240, 0.75) 0%, rgba(245, 240, 232, 0.4) 50%, transparent 100%),
+        radial-gradient(ellipse 88% 72% at 50% 44%, rgba(252, 251, 248, 0.94) 0%, rgba(244, 242, 238, 0.8) 36%, rgba(235, 238, 244, 0.38) 58%, transparent 82%),
         url('hero.png') center center / cover no-repeat;
       position: relative;
     }
@@ -257,7 +330,9 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(to bottom, rgba(245, 240, 232, 0.15) 0%, transparent 30%, transparent 70%, rgba(61, 56, 50, 0.08) 100%);
+      background:
+        radial-gradient(ellipse 70% 58% at 50% 46%, rgba(255, 255, 255, 0.35) 0%, transparent 62%),
+        linear-gradient(to bottom, rgba(240, 242, 246, 0.4) 0%, transparent 32%, transparent 68%, rgba(19, 43, 71, 0.14) 100%);
       pointer-events: none;
     }
 
@@ -266,28 +341,97 @@
       margin: 0 auto;
       text-align: center;
       position: relative;
+      z-index: 1;
     }
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 600;
+      font-size: clamp(2.65rem, 6.5vw, 4.25rem);
+      font-weight: 700;
       color: var(--color-ink);
-      line-height: 1.15;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.92),
+        0 0 36px rgba(255, 255, 255, 0.82),
+        0 2px 20px rgba(255, 255, 255, 0.55);
     }
 
     .hero h1 em {
       font-style: italic;
+      font-weight: 600;
       color: var(--color-teal);
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.88),
+        0 0 24px rgba(255, 255, 255, 0.75);
     }
 
-    .hero p {
+    .hero-inner > p:not(.hero-vanity) {
       font-size: 1.15rem;
-      color: var(--color-stone);
+      font-weight: 600;
+      color: var(--color-ink);
       max-width: 560px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1.25rem;
+      line-height: 1.65;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.98),
+        0 0 22px rgba(255, 255, 255, 0.72);
+    }
+
+    /* Vanity line above hero headline — eyebrow / kicker */
+    .hero-vanity {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-ink);
+      max-width: 36rem;
+      margin: 0 auto 1.25rem;
+      line-height: 1.5;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.95),
+        0 0 14px rgba(255, 255, 255, 0.55);
+    }
+
+    .hero-vanity::after {
+      content: '';
+      display: block;
+      width: min(12rem, 40vw);
+      height: 2px;
+      margin: 0.9rem auto 0;
+      border-radius: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-teal), transparent);
+      opacity: 0.9;
+    }
+
+    .hero-vanity .brand-515-mnemonic {
+      font-size: 1.125rem;
+      letter-spacing: 0.075em;
+      padding: 0.34em 0.68em 0.28em;
+      vertical-align: 0.14em;
+    }
+
+    .hero-vanity-tel {
+      text-decoration: none;
+      color: inherit;
+      border: 0;
+      transition: none;
+    }
+
+    .hero-vanity-tel:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+
+    .hero-vanity-tel:hover .brand-515-mnemonic,
+    .hero-vanity-tel:focus-visible .brand-515-mnemonic {
+      transform: translateY(-1px);
+      border-color: rgba(184, 137, 61, 0.82);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 4px 14px rgba(19, 43, 71, 0.12);
     }
 
     .hero-buttons {
@@ -298,93 +442,148 @@
     }
 
     .hero .btn-primary {
-      background: var(--color-teal);
+      background: linear-gradient(165deg, var(--color-teal) 0%, #224770 100%);
       color: var(--color-white);
-      border-color: var(--color-teal);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 28px rgba(42, 85, 130, 0.45);
     }
 
     .hero .btn-primary:hover {
-      background: var(--color-teal-light);
-      border-color: var(--color-teal-light);
+      background: linear-gradient(165deg, var(--color-teal-light) 0%, var(--color-teal) 100%);
+      border-color: rgba(255, 255, 255, 0.3);
       color: var(--color-white);
+      box-shadow: 0 10px 36px rgba(42, 85, 130, 0.5);
     }
 
     .hero .btn-outline {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(10px);
       color: var(--color-ink);
-      border-color: var(--color-ink);
+      border: 2px solid rgba(19, 43, 71, 0.28);
+      box-shadow: 0 4px 24px rgba(19, 43, 71, 0.1);
     }
 
     .hero .btn-outline:hover {
       background: var(--color-ink);
       color: var(--color-white);
+      border-color: var(--color-ink);
     }
 
     /* Services */
     .services {
-      padding: 5rem 1.5rem;
-      background: var(--color-white);
+      position: relative;
+      padding: 5.5rem 1.5rem;
+      background: linear-gradient(180deg, var(--color-white) 0%, #f7f8fb 48%, #eef1f6 100%);
+    }
+
+    .services::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--color-teal), var(--color-accent), var(--color-teal));
+      opacity: 0.95;
     }
 
     .section-header {
       text-align: center;
-      max-width: 600px;
-      margin: 0 auto 3.5rem;
+      max-width: 640px;
+      margin: 0 auto 3.75rem;
     }
 
     .section-header h2 {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 600;
+      font-size: clamp(2.1rem, 4.2vw, 3rem);
+      font-weight: 700;
       color: var(--color-ink);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    .section-header h2::after {
+      content: '';
+      display: block;
+      width: 3.5rem;
+      height: 3px;
+      margin: 1rem auto 0;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
     }
 
     .section-header p {
       color: var(--color-stone);
-      font-size: 1.05rem;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      margin-top: 1.25rem;
     }
 
     .services-grid {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
     .service-card {
-      background: var(--color-cream);
-      padding: 2rem;
-      border-radius: var(--radius);
-      transition: all 0.3s ease;
-      border: 1px solid transparent;
+      background: linear-gradient(165deg, var(--color-white) 0%, #faf9f7 100%);
+      padding: 2.1rem 2rem;
+      border-radius: var(--radius-lg);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      border: 1px solid rgba(19, 43, 71, 0.08);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-teal), var(--color-accent));
+      opacity: 0;
+      transition: opacity 0.35s ease;
     }
 
     .service-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       box-shadow: var(--shadow-lift);
-      border-color: rgba(139, 115, 85, 0.2);
+      border-color: rgba(42, 85, 130, 0.18);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
     }
 
     .service-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--color-ink);
+      width: 58px;
+      height: 58px;
+      background: linear-gradient(145deg, var(--color-ink) 0%, #1a4570 100%);
       color: var(--color-white);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.35rem;
+      box-shadow:
+        0 10px 28px rgba(19, 43, 71, 0.3),
+        0 0 0 2px rgba(184, 137, 61, 0.28);
     }
 
     .service-card h3 {
       font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: 1.55rem;
+      font-weight: 700;
       color: var(--color-ink);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.55rem;
+      letter-spacing: -0.02em;
     }
 
     .service-card p {
@@ -394,49 +593,110 @@
 
     /* About Section */
     .about {
-      padding: 5rem 1.5rem;
-      background: var(--color-sand);
+      padding: 5.5rem 1.5rem;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(42, 85, 130, 0.06), transparent 65%),
+        linear-gradient(180deg, #dde3eb 0%, var(--color-sand) 40%, var(--color-sand) 100%);
     }
 
     .about-inner {
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto;
       text-align: center;
+      padding: 3rem 2.5rem;
+      background: linear-gradient(180deg, var(--color-white) 0%, #faf9f7 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(19, 43, 71, 0.09);
+      box-shadow: var(--shadow-lift);
     }
 
     .about h2 {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 600;
+      font-size: clamp(2.1rem, 4vw, 2.85rem);
+      font-weight: 700;
       color: var(--color-ink);
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .about h2::after {
+      content: '';
+      display: block;
+      width: 3.5rem;
+      height: 3px;
+      margin: 1rem auto 0;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
     }
 
     .about p {
       font-size: 1.1rem;
       color: var(--color-stone);
-      line-height: 1.7;
+      line-height: 1.75;
+      margin-top: 1.5rem;
     }
 
     /* CTA Section */
     .cta {
-      padding: 5rem 1.5rem;
-      background: var(--color-ink);
-      color: var(--color-cream);
+      position: relative;
+      padding: 5.5rem 1.5rem;
       text-align: center;
+      color: #f2efe8;
+      background:
+        radial-gradient(ellipse 85% 55% at 85% 15%, rgba(184, 137, 61, 0.22), transparent 50%),
+        radial-gradient(ellipse 60% 45% at 10% 90%, rgba(61, 111, 158, 0.18), transparent 50%),
+        linear-gradient(165deg, #0a1929 0%, var(--color-ink) 42%, #152f4a 100%);
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-accent-light), transparent);
+      opacity: 0.95;
     }
 
     .cta h2 {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 600;
+      font-size: clamp(2.2rem, 4.5vw, 3.15rem);
+      font-weight: 700;
       margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      color: var(--color-white);
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+      text-wrap: balance;
+      position: relative;
+      z-index: 1;
     }
 
     .cta p {
-      max-width: 500px;
+      max-width: 520px;
       margin: 0 auto 2rem;
-      opacity: 0.9;
+      opacity: 0.92;
+      line-height: 1.65;
+      font-size: 1.06rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta .btn-primary {
+      background: linear-gradient(165deg, var(--color-accent-light) 0%, var(--color-accent) 55%, #966d26 100%);
+      color: var(--color-white);
+      border: 2px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta .btn-primary:hover {
+      background: linear-gradient(165deg, #ddb86a 0%, var(--color-accent-light) 100%);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--color-white);
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
     }
 
     .cta .cta-phone {
@@ -451,10 +711,12 @@
       flex-direction: column;
       align-items: center;
       gap: 0.35rem;
-      color: var(--color-cream);
+      color: #f2efe8;
       text-decoration: none;
       font-weight: 600;
       transition: opacity 0.2s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .cta-phone-link:hover {
@@ -488,9 +750,10 @@
 
     /* Footer */
     .footer {
-      background: var(--color-stone);
-      color: var(--color-sand);
-      padding: 3rem 1.5rem 2rem;
+      color: #d8dde6;
+      padding: 3.25rem 1.5rem 2rem;
+      background: linear-gradient(180deg, #3f5166 0%, var(--color-stone) 38%, #354252 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
     .footer-inner {
@@ -502,24 +765,28 @@
       gap: 2rem;
       margin-bottom: 2rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .footer-logo-wrap {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0;
+      padding: 0.55rem 0.9rem;
+      background: linear-gradient(180deg, #fdfcfa 0%, #f2ede4 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 2px 16px rgba(8, 18, 36, 0.22);
     }
     .footer-logo-icon {
       height: 32px;
       width: auto;
-      filter: invert(1);
-      mix-blend-mode: lighten;
+      mix-blend-mode: multiply;
     }
     .footer-logo {
       height: 40px;
-      filter: invert(1);
-      mix-blend-mode: lighten;
+      width: auto;
+      mix-blend-mode: multiply;
     }
 
     .footer nav {
@@ -653,6 +920,10 @@
         flex-wrap: nowrap;
         padding: 0 0.5rem;
       }
+
+      .about-inner {
+        padding: 2.25rem 1.35rem;
+      }
     }
   </style>
 </head>
@@ -669,7 +940,7 @@
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <a href="tel:5159463667" class="nav-phone">📞 <span class="brand-515-mnemonic">515-WINDOWS</span></a>
+        <a href="tel:5159463697" class="nav-phone">📞 <span class="brand-515-mnemonic">515-WINDOWS</span></a>
         <a href="#contact">Free Quote</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -685,6 +956,7 @@
   <main>
     <section class="hero">
       <div class="hero-inner">
+        <p class="hero-vanity">Call or Text <a href="tel:5159463697" class="hero-vanity-tel"><span class="brand-515-mnemonic">515-WINDOWS</span></a> to know more.</p>
         <h1>Transform Your Space with <em>Beautiful</em> Window Treatments</h1>
         <p>Custom blinds, shades, and shutters crafted for your home. Expert installation, premium materials, and timeless style—all in one place.</p>
         <div class="hero-buttons">
@@ -733,8 +1005,8 @@
     <section class="cta" id="contact">
       <h2>Ready to Love Your Windows?</h2>
       <p>Schedule a free in-home consultation. We'll measure, advise, and bring samples—no obligation.</p>
-      <p class="cta-phone"><a href="tel:5159463667" class="cta-phone-link"><span class="cta-phone-label">Call or text</span><span class="cta-phone-mnemonic"><span class="brand-515-mnemonic">515-WINDOWS</span></span><span class="cta-phone-digits">(515) 946-3667</span></a></p>
-      <a href="mailto:quotes@WindowServe.com" class="btn btn-primary" style="background: var(--color-accent); border-color: var(--color-accent);">Email quotes@windowserve.com</a>
+      <p class="cta-phone"><a href="tel:5159463697" class="cta-phone-link"><span class="cta-phone-label">Call or text</span><span class="cta-phone-mnemonic"><span class="brand-515-mnemonic">515-WINDOWS</span></span></a></p>
+      <a href="mailto:quotes@WindowServe.com" class="btn btn-primary">Email quotes@windowserve.com</a>
     </section>
   </main>
 
@@ -761,7 +1033,7 @@
         </div>
       </nav>
     </div>
-    <p class="footer-bottom">© WindowServe Inc. | 📞 <a href="tel:5159463667" class="footer-phone-link"><span class="brand-515-mnemonic">515-WINDOWS</span><span class="footer-phone-sep" aria-hidden="true"></a> | Des Moines, Iowa</p>
+    <p class="footer-bottom">© WindowServe Inc. | 📞 <a href="tel:5159463697" class="footer-phone-link"><span class="brand-515-mnemonic">515-WINDOWS</span><span class="footer-phone-sep" aria-hidden="true">·</span><span class="footer-phone-digits">(515) 946-3697</span></a> | Des Moines, Iowa</p>
   </footer>
 
   <script>
