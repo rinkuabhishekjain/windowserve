@@ -316,7 +316,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 8rem 1.5rem 4rem;
+      padding: 5.35rem 1.5rem 4rem;
       background: 
         radial-gradient(ellipse 88% 72% at 50% 44%, rgba(252, 251, 248, 0.94) 0%, rgba(244, 242, 238, 0.8) 36%, rgba(235, 238, 244, 0.38) 58%, transparent 82%),
         url('hero.png') center center / cover no-repeat;
@@ -339,6 +339,7 @@
     .hero-inner {
       max-width: 900px;
       margin: 0 auto;
+      margin-top: -4rem;
       text-align: center;
       position: relative;
       z-index: 1;
@@ -380,30 +381,53 @@
         0 0 22px rgba(255, 255, 255, 0.72);
     }
 
-    /* Vanity line above hero headline — eyebrow / kicker */
+    /* Vanity block above hero headline */
     .hero-vanity {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-ink);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4rem 0.55rem;
       max-width: 36rem;
-      margin: 0 auto 1.25rem;
-      line-height: 1.5;
+      margin: -2.4rem auto 3.55rem;
+      line-height: 1.45;
+      color: var(--color-ink);
       text-shadow:
         0 1px 0 rgba(255, 255, 255, 0.95),
         0 0 14px rgba(255, 255, 255, 0.55);
     }
 
+    .hero-vanity-line {
+      text-align: center;
+    }
+
+    .hero-vanity-cta {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-vanity-tail {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: none;
+      color: var(--color-ink);
+      opacity: 0.9;
+    }
+
     .hero-vanity::after {
       content: '';
-      display: block;
+      flex-basis: 100%;
       width: min(12rem, 40vw);
       height: 2px;
-      margin: 0.9rem auto 0;
+      margin: 0.65rem auto 0;
       border-radius: 2px;
       background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-teal), transparent);
       opacity: 0.9;
+      order: 10;
     }
 
     .hero-vanity .brand-515-mnemonic {
@@ -418,6 +442,7 @@
       color: inherit;
       border: 0;
       transition: none;
+      line-height: 1.2;
     }
 
     .hero-vanity-tel:focus-visible {
@@ -924,6 +949,43 @@
       .about-inner {
         padding: 2.25rem 1.35rem;
       }
+
+      .hero {
+        padding: 5.1rem 1.25rem 3.5rem;
+      }
+
+      .hero-inner {
+        margin-top: -2.25rem;
+      }
+
+      .hero-vanity {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        max-width: 22rem;
+      }
+
+      .hero-vanity-line {
+        display: block;
+        width: 100%;
+      }
+
+      .hero-vanity-cta {
+        order: 1;
+      }
+
+      .hero-vanity-tel {
+        order: 2;
+      }
+
+      .hero-vanity-tail {
+        order: 3;
+      }
+
+      .hero-vanity::after {
+        order: 4;
+        margin-top: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -956,7 +1018,11 @@
   <main>
     <section class="hero">
       <div class="hero-inner">
-        <p class="hero-vanity">Call or Text <a href="tel:5159463697" class="hero-vanity-tel"><span class="brand-515-mnemonic">515-WINDOWS</span></a> to know more.</p>
+        <p class="hero-vanity">
+          <span class="hero-vanity-line hero-vanity-cta">Call or Text</span>
+          <a href="tel:5159463697" class="hero-vanity-tel hero-vanity-line"><span class="brand-515-mnemonic">515-WINDOWS</span></a>
+          <span class="hero-vanity-line hero-vanity-tail">We're happy to help.</span>
+        </p>
         <h1>Transform Your Space with <em>Beautiful</em> Window Treatments</h1>
         <p>Custom blinds, shades, and shutters crafted for your home. Expert installation, premium materials, and timeless style—all in one place.</p>
         <div class="hero-buttons">
