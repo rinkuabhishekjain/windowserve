@@ -465,10 +465,14 @@
 
     .service-card {
       background: var(--color-cream);
-      padding: 2rem;
+      padding: 0;
       border-radius: var(--radius);
       transition: all 0.3s ease;
       border: 1px solid transparent;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .service-card:hover {
@@ -477,17 +481,27 @@
       border-color: rgba(139, 115, 85, 0.2);
     }
 
-    .service-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--color-ink);
-      color: var(--color-white);
-      border-radius: 50%;
+    /* Intrinsic image size: no stretch past natural dimensions (avoids soft “zoom” upscale). */
+    .service-card-media {
+      overflow: hidden;
+      background: var(--color-sand);
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .service-card-media img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .service-card-body {
+      padding: 1.35rem 1.5rem 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card h3 {
@@ -501,6 +515,8 @@
     .service-card p {
       color: var(--color-stone);
       font-size: 0.95rem;
+      line-height: 1.6;
+      flex: 1;
     }
 
     /* About Section */
@@ -935,24 +951,40 @@
       </div>
       <div class="services-grid">
         <article class="service-card">
-          <div class="service-icon">〰</div>
-          <h3>Blinds</h3>
-          <p>Wood, faux wood, and aluminum blinds for precise light control and enduring elegance in any room.</p>
+          <div class="service-card-media">
+            <img src="service-blinds.png" alt="Warm wood horizontal blinds in a sunlit room with classic furnishings." width="256" height="523" loading="lazy" decoding="async">
+          </div>
+          <div class="service-card-body">
+            <h3>Blinds</h3>
+            <p>Wood, faux wood, and aluminum blinds for precise light control and enduring elegance in any room.</p>
+          </div>
         </article>
         <article class="service-card">
-          <div class="service-icon">⊞</div>
-          <h3>Shades</h3>
-          <p>Roman, roller, cellular, and solar shades that soften light, add privacy, and elevate your décor.</p>
+          <div class="service-card-media">
+            <img src="service-shades.png" alt="Neutral linen Roman shades above a modern sofa." width="256" height="523" loading="lazy" decoding="async">
+          </div>
+          <div class="service-card-body">
+            <h3>Shades</h3>
+            <p>Roman, roller, cellular, and solar shades that soften light, add privacy, and elevate your décor.</p>
+          </div>
         </article>
         <article class="service-card">
-          <div class="service-icon">⊟</div>
-          <h3>Shutters</h3>
-          <p>Custom-built plantation shutters for a permanent, high-value upgrade that complements any home.</p>
+          <div class="service-card-media">
+            <img src="service-shutters.png" alt="Crisp white plantation shutters with traditional molding." width="256" height="523" loading="lazy" decoding="async">
+          </div>
+          <div class="service-card-body">
+            <h3>Shutters</h3>
+            <p>Custom-built plantation shutters for a permanent, high-value upgrade that complements any home.</p>
+          </div>
         </article>
         <article class="service-card">
-          <div class="service-icon">⌸</div>
-          <h3>Drapery & Curtains</h3>
-          <p>Luxurious fabrics and custom lengths to frame your windows and add warmth to your interiors.</p>
+          <div class="service-card-media">
+            <img src="service-drapery.png" alt="Floor-length pleated drapery with tiebacks in a serene bedroom." width="256" height="523" loading="lazy" decoding="async">
+          </div>
+          <div class="service-card-body">
+            <h3>Drapery & Curtains</h3>
+            <p>Luxurious fabrics and custom lengths to frame your windows and add warmth to your interiors.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -965,7 +997,7 @@
     </section>
 
     <section class="cta" id="contact">
-      <p>Schedule a free in-home consultation.  — we'll measure, advise, and bring samples—no obligation.</p>
+      <p>Schedule a free in-home consultation — we'll measure, advise, and bring samples—no obligation.</p>
       <p class="cta-phone"><a href="tel:5159463697" class="cta-phone-link"><span class="cta-phone-label">Call or text</span><span class="cta-phone-mnemonic"><span class="brand-515-wordmark cta-wordmark-pill">515-WINDOWS</span></span></a></p>
       <a href="mailto:quotes@WindowServe.com" class="btn btn-primary">Email quotes@windowserve.com</a>
     </section>
