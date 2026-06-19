@@ -199,6 +199,33 @@ ul { margin: 0; padding: 0; }
 
 /* ---------- Section heading block ---------- */
 .section-head { max-width: 720px; margin: 0 auto clamp(36px, 5vw, 60px); text-align: center; }
+.section-head__intro { color: var(--body); font-size: 1.06rem; margin: .6rem 0 0; }
+
+/* ---------- Team ---------- */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; max-width: 860px; margin: 0 auto; }
+.team-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease; }
+.team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.team-card__photo { aspect-ratio: 4 / 5; background: var(--cream-2); }
+.team-card__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+.team-card__body { padding: 1.4rem 1.5rem 1.6rem; }
+.team-card__body h3 { font-family: var(--serif); font-size: 1.35rem; margin-bottom: .15rem; }
+.team-card__role { color: var(--gold-600); font-weight: 700; font-size: .92rem; letter-spacing: .02em; margin-bottom: .7rem; }
+.team-card__body p { font-size: .95rem; margin: 0; color: var(--body); }
+#team { scroll-margin-top: calc(var(--header-h) + 16px); }
+
+/* ---------- Team teaser (homepage) ---------- */
+.team-teaser { display: flex; align-items: center; gap: clamp(1.4rem, 4vw, 3rem); justify-content: center; flex-wrap: wrap; text-align: left; }
+.team-teaser__avatars { display: flex; flex: none; }
+.team-teaser__avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 3px solid var(--navy-800); box-shadow: var(--shadow-md); }
+.team-teaser__avatar:not(:first-child) { margin-left: -26px; }
+.team-teaser__text { max-width: 560px; }
+.team-teaser__text h2 { margin-bottom: .4rem; }
+.team-teaser__text .eyebrow { justify-content: flex-start; }
+@media (max-width: 640px) {
+  .team-teaser { flex-direction: column; text-align: center; }
+  .team-teaser__text .eyebrow { justify-content: center; }
+  .team-teaser__avatar { width: 78px; height: 78px; }
+}
 
 /* ---------- Cards / services ---------- */
 .grid { display: grid; gap: 1.6rem; }

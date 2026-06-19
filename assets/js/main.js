@@ -112,6 +112,7 @@
           "</ul></div>" +
           "<div><h4>Company</h4><ul>" +
             '<li><a href="about.html">About Us</a></li>' +
+            (CFG.team && CFG.team.show ? '<li><a href="about.html#team">Meet the Team</a></li>' : "") +
             '<li><a href="faq.html">FAQ &amp; Financing</a></li>' +
             '<li><a href="service-areas.html">Service Areas</a></li>' +
             '<li><a href="contact.html">Book a Consultation</a></li>' +
@@ -203,6 +204,80 @@
     });
   }
 
+  /* ---------- Team section (config-driven, toggleable) ---------- */
+  function renderTeam() {
+    var mount = document.querySelector("[data-team]");
+    if (!mount) return;
+    var T = CFG.team || {};
+    var members = T.members || [];
+    if (!T.show || !members.length) { mount.remove(); return; }
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    var cards = members.map(function (m) {
+      return (
+        '<article class="team-card reveal">' +
+          '<div class="team-card__photo">' +
+            (m.photo ? '<img src="' + esc(m.photo) + '" alt="' + esc(m.name) + ' — ' + esc(m.role) + '" loading="lazy">' : "") +
+          "</div>" +
+          '<div class="team-card__body">' +
+            '<h3>' + esc(m.name) + "</h3>" +
+            '<div class="team-card__role">' + esc(m.role) + "</div>" +
+            (m.bio ? "<p>" + esc(m.bio) + "</p>" : "") +
+          "</div>" +
+        "</article>"
+      );
+    }).join("");
+
+    mount.innerHTML =
+      '<div class="container">' +
+        '<div class="section-head reveal">' +
+          (T.eyebrow ? '<span class="eyebrow">' + esc(T.eyebrow) + "</span>" : "") +
+          "<h2>" + esc(T.heading || "Meet the Team") + "</h2>" +
+          (T.intro ? '<p class="section-head__intro">' + esc(T.intro) + "</p>" : "") +
+        "</div>" +
+        '<div class="team-grid">' + cards + "</div>" +
+      "</div>";
+  }
+
+  /* ---------- Team teaser (homepage, config-driven) ---------- */
+  function renderTeamTeaser() {
+    var mount = document.querySelector("[data-team-teaser]");
+    if (!mount) return;
+    var T = CFG.team || {};
+    var members = T.members || [];
+    if (!T.show || !members.length) { mount.remove(); return; }
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    var avatars = members.slice(0, 4).map(function (m) {
+      return m.photo
+        ? '<img class="team-teaser__avatar" src="' + esc(m.photo) + '" alt="' + esc(m.name) + '" loading="lazy">'
+        : "";
+    }).join("");
+
+    mount.innerHTML =
+      '<div class="container">' +
+        '<div class="team-teaser reveal">' +
+          '<div class="team-teaser__avatars">' + avatars + "</div>" +
+          '<div class="team-teaser__text">' +
+            '<span class="eyebrow" style="justify-content:center;">' + esc(T.eyebrow || "Our Team") + "</span>" +
+            "<h2>" + esc(T.teaserHeading || "Meet the team") + "</h2>" +
+            (T.teaserText ? '<p class="lead">' + esc(T.teaserText) + "</p>" : "") +
+            '<div class="mt-3"><a class="btn btn--gold btn--lg" href="about.html#team">Meet the Team</a></div>' +
+          "</div>" +
+        "</div>" +
+      "</div>";
+  }
+
   /* ---------- Hero crossfade slideshow (desktop only) ---------- */
   function initHeroSlides() {
     var box = document.querySelector("[data-hero-slides]");
@@ -284,6 +359,8 @@
     }
 
     initNav();
+    renderTeam();
+    renderTeamTeaser();
     initHeroSlides();
     initReveal();
     renderGHLEmbeds();

@@ -32,6 +32,33 @@ window.WINDOWSERVE = {
     }
   },
 
+  // ---- Team section (About page) ----
+  // Set show:false to hide the entire "Meet the Team" section site-wide.
+  // Add, remove, or edit members below. Each photo lives in assets/images/.
+  team: {
+    show: true,
+    heading: "Meet the Team",
+    eyebrow: "The People Behind WindowServe",
+    intro: "Friendly local experts who handle everything from your first design consultation to a flawless final install.",
+    // Homepage teaser (links to about.html#team). Hidden automatically when show:false.
+    teaserHeading: "Meet the people behind your windows",
+    teaserText: "From your first design consultation to a flawless final install, you'll work with the same friendly, local WindowServe team — never a call center.",
+    members: [
+      {
+        name: "Sarah Mitchell",
+        role: "Design & Sales Consultant",
+        photo: "assets/images/team-consultant.jpg",
+        bio: "A licensed real estate agent with over a decade in home design and staging, Sarah helps homeowners choose treatments that fit their light, lifestyle, and budget — right in their living room."
+      },
+      {
+        name: "Mike Reynolds",
+        role: "Lead Installer",
+        photo: "assets/images/team-installer.jpg",
+        bio: "With 15+ years of precision install experience, Mike measures to the fraction of an inch and treats every home like his own — clean, level, and done right the first time."
+      }
+    ]
+  },
+
   // ---- GoHighLevel embeds (paste your IDs/URLs here) ----
   ghl: {
     // Lead/quote form embed id
