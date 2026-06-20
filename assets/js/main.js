@@ -185,6 +185,32 @@
     sc.setAttribute("data-widget-id", G.chatWidgetId);
     sc.async = true;
     document.body.appendChild(sc);
+    liftChatAboveMobileBar();
+  }
+
+  /* The GHL chat bubble is fixed at bottom-right and collides with the sticky
+     mobile action bar. It lives in a shadow DOM, so we inject a style into the
+     widget's shadow root to lift the launcher + panel above the bar on phones. */
+  function liftChatAboveMobileBar() {
+    var tries = 0;
+    var iv = setInterval(function () {
+      tries++;
+      var host = document.querySelector("chat-widget");
+      if (host && host.shadowRoot) {
+        if (!host.shadowRoot.getElementById("ws-chat-offset")) {
+          var st = document.createElement("style");
+          st.id = "ws-chat-offset";
+          st.textContent =
+            "@media (max-width:860px){" +
+            "#lc_text-widget,#lc_text-widget--btn{bottom:84px !important;}" +
+            "}";
+          host.shadowRoot.appendChild(st);
+        }
+        clearInterval(iv);
+      } else if (tries > 40) {
+        clearInterval(iv);
+      }
+    }, 500);
   }
 
   /* ---------- Mobile nav toggle ---------- */
@@ -286,7 +312,6 @@
     if (slides.length < 2) return;
 
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var desktop = window.matchMedia("(min-width: 861px)");
     var INTERVAL = 6000;
     var idx = 0;
     var timer = null;
@@ -298,31 +323,20 @@
     }
     function next() { show(idx + 1); }
     function start() {
-      if (timer || reduce || !desktop.matches) return;
+      if (timer || reduce) return;
       timer = setInterval(function () {
         if (!document.hidden) next();
       }, INTERVAL);
     }
-    function stop() {
-      if (timer) { clearInterval(timer); timer = null; }
-      // reset to the first slide so mobile always shows the primary image
-      show(0);
-    }
 
-    function sync() {
-      if (desktop.matches && !reduce) start();
-      else stop();
-    }
-
-    if (desktop.addEventListener) desktop.addEventListener("change", sync);
-    else if (desktop.addListener) desktop.addListener(sync);
+    if (reduce) { show(0); return; }
 
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) { if (timer) { clearInterval(timer); timer = null; } }
       else start();
     });
 
-    sync();
+    start();
   }
 
   /* ---------- Reveal on scroll ---------- */

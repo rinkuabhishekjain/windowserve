@@ -98,6 +98,7 @@ ul { margin: 0; padding: 0; }
 .btn--ghost-navy:hover { background: var(--navy-800); color: #fff; }
 .btn--lg { padding: 1.05rem 2.1rem; font-size: 1.05rem; }
 .btn--block { width: 100%; }
+.btn__short { display: none; }
 
 /* ---------- Top utility bar ---------- */
 .topbar {
@@ -155,12 +156,6 @@ ul { margin: 0; padding: 0; }
   will-change: opacity;
 }
 .hero__slide.is-active { opacity: 1; transform: scale(1); }
-/* Mobile: only the first slide is used (single static image). */
-@media (max-width: 860px) {
-  .hero__slide--desk { display: none; }
-  .hero__slide { transform: none; transition: none; }
-  .hero__slide.is-active { transform: none; }
-}
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   /* Narrow soft scrim sitting directly behind the left-aligned text;
@@ -414,6 +409,9 @@ a.area-chip:hover { transform: translateY(-2px); border-color: var(--gold-500); 
   .topbar .hide-sm { display: none; }
   .nav, .header__phone { display: none; }
   .hamburger { display: block; }
+  /* Mobile keeps the cross-fade carousel but drops the Ken-Burns zoom to save CPU. */
+  .hero__slide { transform: none; }
+  .hero__slide.is-active { transform: none; }
   /* Mobile shows the full image (not just its dark left), so strengthen the
      scrim across the hero to keep the left-aligned white text legible. */
   .hero::after {
@@ -457,6 +455,9 @@ a.area-chip:hover { transform: translateY(-2px); border-color: var(--gold-500); 
   .footer__grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .hero__cta .btn { flex: 1; }
+  /* Shorter hero CTA labels on phones so they stay on one line. */
+  .hero__cta .btn__full { display: none; }
+  .hero__cta .btn__short { display: inline; }
   /* Let long button labels wrap instead of forcing horizontal page scroll. */
   .btn { white-space: normal; max-width: 100%; }
   .btn--lg { padding: .95rem 1.4rem; font-size: 1rem; }
