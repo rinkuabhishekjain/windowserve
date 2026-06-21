@@ -20,7 +20,7 @@ window.WINDOWSERVE = {
     phoneVanity: "515-WINDOWS",
     phoneDigits: "5159463697", // used for tel: and sms: links
     phonePretty: "(515) 946-3697",
-    email: "quotes@windowserve.com",
+    email: "info@windowserve.com",
     city: "Des Moines",
     region: "Iowa",
     regionCode: "IA",

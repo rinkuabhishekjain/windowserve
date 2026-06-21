@@ -126,6 +126,11 @@
         "</div>" +
         '<div class="container"><div class="footer__bottom">' +
           "<span>&copy; " + year + " " + (B.name || "") + ". All rights reserved.</span>" +
+          '<span class="footer__legal">' +
+            '<a href="privacy-policy.html">Privacy Policy</a>' +
+            '<span class="footer__legal-sep">·</span>' +
+            '<a href="terms-of-conditions.html">Terms &amp; Conditions</a>' +
+          "</span>" +
           "<span>Call or text " + tel(B.phoneVanity) + " &nbsp;·&nbsp; " + (B.city || "") + ", " + (B.region || "") + "</span>" +
         "</div></div>" +
       "</footer>"
