@@ -36,7 +36,7 @@ window.WINDOWSERVE = {
   // Set show:false to hide the entire "Meet the Team" section site-wide.
   // Add, remove, or edit members below. Each photo lives in assets/images/.
   team: {
-    show: true,
+    show: false,
     heading: "Meet the Team",
     eyebrow: "The People Behind WindowServe",
     intro: "Friendly local experts who handle everything from your first design consultation to a flawless final install.",
