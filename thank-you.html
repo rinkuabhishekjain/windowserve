@@ -3,6 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3D4KL3PF6Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3D4KL3PF6Y');
+    // Fire a lead conversion when a visitor reaches the thank-you page.
+    gtag('event', 'generate_lead', {
+      event_category: 'engagement',
+      event_label: 'quote_form_submitted'
+    });
+  </script>
   <title>Thank You | WindowServe</title>
   <meta name="description" content="Thanks for reaching out to WindowServe. We'll be in touch shortly. For anything urgent, call or text 515-WINDOWS." />
   <meta name="robots" content="noindex" />
